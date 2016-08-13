@@ -355,7 +355,9 @@ class MenuItem implements ArrayableContract
     {
         $attributes = $this->attributes;
 
-        array_forget($attributes, ['active', 'icon']);
+        if (is_array($attributes) || is_string($attributes)) {
+            array_forget($attributes, ['active', 'icon']);
+        }
 
         return HTML::attributes($attributes);
     }
